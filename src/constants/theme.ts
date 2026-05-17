@@ -1,65 +1,130 @@
-/**
- * Below are the colors that are used in the app. The colors are defined in the light and dark mode.
- * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
- */
+// Design tokens based on Lingua design system
+// Used for consistent styling across Reelroom
 
-import '@/global.css';
-
-import { Platform } from 'react-native';
-
-export const Colors = {
-  light: {
-    text: '#000000',
-    background: '#ffffff',
-    backgroundElement: '#F0F0F3',
-    backgroundSelected: '#E0E1E6',
-    textSecondary: '#60646C',
+export const colors = {
+  // Primary colors
+  primary: {
+    DEFAULT: '#6C4EF5',
+    light: '#5B3BF6',
+    lighter: '#4D8BFF',
   },
-  dark: {
-    text: '#ffffff',
-    background: '#000000',
-    backgroundElement: '#212225',
-    backgroundSelected: '#2E3135',
-    textSecondary: '#B0B4BA',
+
+  // Semantic colors
+  semantic: {
+    success: '#21C168',
+    warning: '#FFC800',
+    streak: '#FF5A00',
+    error: '#FF4D4F',
+    info: '#4D8BFF',
+  },
+
+  // Neutral/Gray scale
+  neutral: {
+    0: '#FFFFFF',
+    50: '#F6F7FB',
+    100: '#E5E7EB',
+    200: '#E5E7EB',
+    600: '#687280',
+    900: '#0D1328',
   },
 } as const;
 
-export type ThemeColor = keyof typeof Colors.light & keyof typeof Colors.dark;
+export const typography = {
+  // Font family
+  fontFamily: {
+    sans: 'Poppins',
+    poppins: 'Poppins',
+  },
 
-export const Fonts = Platform.select({
-  ios: {
-    /** iOS `UIFontDescriptorSystemDesignDefault` */
-    sans: 'system-ui',
-    /** iOS `UIFontDescriptorSystemDesignSerif` */
-    serif: 'ui-serif',
-    /** iOS `UIFontDescriptorSystemDesignRounded` */
-    rounded: 'ui-rounded',
-    /** iOS `UIFontDescriptorSystemDesignMonospaced` */
-    mono: 'ui-monospace',
+  // Font sizes with line heights
+  heading: {
+    h1: {
+      size: 32,
+      weight: 700,
+      lineHeight: 1.2,
+      label: 'Page / Screen Title',
+    },
+    h2: {
+      size: 24,
+      weight: 600,
+      lineHeight: 1.3,
+      label: 'Section Title',
+    },
+    h3: {
+      size: 20,
+      weight: 600,
+      lineHeight: 1.3,
+      label: 'Card / Module Title',
+    },
+    h4: {
+      size: 16,
+      weight: 500,
+      lineHeight: 1.4,
+      label: 'Subheading',
+    },
   },
-  default: {
-    sans: 'normal',
-    serif: 'serif',
-    rounded: 'normal',
-    mono: 'monospace',
-  },
-  web: {
-    sans: 'var(--font-display)',
-    serif: 'var(--font-serif)',
-    rounded: 'var(--font-rounded)',
-    mono: 'var(--font-mono)',
-  },
-});
 
-export const Spacing = {
-  half: 2,
-  one: 4,
-  two: 8,
-  three: 16,
-  four: 24,
-  five: 32,
-  six: 64,
+  body: {
+    large: {
+      size: 16,
+      weight: 400,
+      lineHeight: 1.6,
+      label: 'Important content',
+    },
+    medium: {
+      size: 14,
+      weight: 400,
+      lineHeight: 1.6,
+      label: 'Body text',
+    },
+    small: {
+      size: 13,
+      weight: 400,
+      lineHeight: 1.6,
+      label: 'Supporting text',
+    },
+  },
+
+  caption: {
+    size: 11,
+    weight: 400,
+    lineHeight: 1.4,
+    label: 'Labels, meta text',
+  },
+
+  // Font weights
+  weights: {
+    regular: 400,
+    medium: 500,
+    semibold: 600,
+    bold: 700,
+  },
 } as const;
 
-export const BottomTabInset = Platform.select({ ios: 50, android: 80 }) ?? 0;
-export const MaxContentWidth = 800;
+export const spacing = {
+  xs: 4,
+  sm: 8,
+  md: 12,
+  lg: 16,
+  xl: 20,
+  '2xl': 24,
+  '3xl': 32,
+  '4xl': 40,
+} as const;
+
+export const borderRadius = {
+  xs: 4,
+  sm: 8,
+  md: 12,
+  lg: 16,
+  xl: 20,
+} as const;
+
+export const theme = {
+  colors,
+  typography,
+  spacing,
+  borderRadius,
+} as const;
+
+export default theme;
